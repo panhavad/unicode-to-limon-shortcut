@@ -3,6 +3,7 @@ import keyboard
 import time
 import pyperclip
 
+from specialIntercept import *
 
 # Define the time window (in seconds) within which the second "Ctrl+C" press is considered quickly repeated
 QUICK_PRESS_WINDOW = 0.5
@@ -23,6 +24,8 @@ def on_key_event(event):
 
             unicode = clipboard_content
             limon = unicode_to_limon(unicode)
+            # Safety check for special case
+            limon = checkSpecialException(limon)
             print(f"unicode: {unicode} -> limon: {limon}")
             pyperclip.copy(limon)
             # Add your code here to do something when "Ctrl+C" is quickly pressed twice
