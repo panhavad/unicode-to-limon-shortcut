@@ -1,6 +1,6 @@
 def checkSpecialException(text):
     if "ba" in text:
-        replaced_text = text.replace("ba", ")a")
-        return replaced_text
-    else:
-        return text
+        text = text.replace("ba", ")a")
+    if "¼" in text:
+        text = text.replace("¼", ",")
+    return text
